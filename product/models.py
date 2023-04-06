@@ -4,6 +4,6 @@ from django.db.models import Model
 
 
 # Create your models here.
-class Product(models, Model):
+class Product(models.Model):
     name = models.CharField(max_length=20)
-    price = models.IntegerField(validators=[MinValueValidator(0)])
+    price = models.IntegerField(validators=[MinValueValidator(0)]) #PositiveInteger()
