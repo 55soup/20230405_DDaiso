@@ -3,6 +3,6 @@ from product import views
 
 app_name = 'product'
 
-urlpatterns = {
+urlpatterns = [
     path('list/', views.ProductListView.as_view(), name='list') #product:list
-}
+]
