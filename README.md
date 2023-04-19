@@ -57,4 +57,6 @@
             ```html
             <a href="{% url 'product:add' %}">Add Product</a>
             ```
-      
+      6. U: ProductUpdateView
+         1. Views
+            1. ProductUpdateView
