@@ -60,3 +60,5 @@
       6. U: ProductUpdateView
          1. Views
             1. ProductUpdateView
+         2. urls
+            1. product:edit
