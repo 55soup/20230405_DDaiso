@@ -72,3 +72,6 @@
             1. ProductDeleteView
          2. urls
             1. product:delete
+         3. templates
+            1. product_confirm_delete.html
+            2. product_list.html
