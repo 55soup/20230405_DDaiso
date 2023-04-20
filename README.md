@@ -76,3 +76,5 @@
             1. product_confirm_delete.html
             2. product_list.html
       8. 🎉🎂🌹❤ 기능 완성
+4. DDaiso/urls
+   1.  / -> home(ProductListView.as_view())
