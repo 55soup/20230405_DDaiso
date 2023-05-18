@@ -10,6 +10,46 @@
 <body>
     {% block content %}
     {% endblock %}
+
+    {% block pagination %}
+        {% if is_paginated %}
+            <ul class="pagination justify-content-center">
+                <!-- 이전 -->
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}" class="page-link">이전</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a href="#" class="page-link">이전</a>
+                    </li>
+                {% endif %}
+                <!-- page -->
+                {% for object in page_obj.paginator.page_range %}
+                    {% if page_obj.number == forloop.counter %}
+                        <!-- URL/?page=숫자 -->
+                       <li class="page-item">
+                           <a href="{{ request.path }}?page={{ forloop.counter }}" class="page-link disabled">{{ forloop.counter }}</a>
+                       </li>
+                    {% else %}
+                        <li class="page-item">
+                           <a href="{{ request.path }}?page={{ forloop.counter }}" class="page-link">{{ forloop.counter }}</a>
+                       </li>
+                    {% endif %}
+                {% endfor %}
+                <!-- 다음 -->
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a href="{{ request.path }}?page={{ page_obj.next_page_number }}" class="page-link">다음</a>
+                    </li>
+                {% else %}
+                     <li class="page-item">
+                        <a href="#" class="page-link disabled">다음</a>
+                    </li>
+                {% endif %}
+            </ul>
+        {% endif %}
+    {% endblock %}
 </body>
 <!-- bootstrap js 추가 -->
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
