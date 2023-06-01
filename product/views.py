@@ -10,7 +10,7 @@ class ProductListView(ListView):
     paginate_by = 3
 
 def list_product(request):
-    product_list = Product.objects.all()[:2] #DB에 있는 product 전체 가져오자
+    product_list = Product.objects.all() #DB에 있는 product 전체 가져오자
     context = {'product_list' : product_list} #product_list라는 키로 놓자
     #product/product_list.html에 보내자
     return render(request, 'product/product_list.html', context)
@@ -20,6 +20,12 @@ class ProductDetailView(DetailView):
     model = Product
     #'product_detail.html' {'product': Product.objects.get(pk=pk)} pk = 'primary key'
 
+def detail_product(request, pk):
+    # DB에서 pk가 pk인 product 하나 가져오자
+    # product_detail.html에게 product라는 변수로 product를 보내자
+    product_detail = Product.objects.get(pk=pk)
+    context = {'product' : product_detail}
+    return render(request, 'product/product_detail.html', context)
 
 class ProductCreateView(CreateView):
     model = Product
