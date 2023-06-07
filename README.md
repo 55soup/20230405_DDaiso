@@ -107,3 +107,8 @@
       2. product/views
       3. product/urls
       4. product/templates/product/product_list.html
+   4. FBV update_product
+      1.  product/forms
+      2. product/views
+      3. product/urls
+      4. product/templates/product/product_list.html
