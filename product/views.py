@@ -74,3 +74,12 @@ class ProductDeleteView(DeleteView):
     # 삭제할 항목만 알면 되기 때문에 fields는 필요없음.
     success_url = reverse_lazy('product:list') #삭제 성공하면 이동할 url 이름
     #product_confirm_delete.html
+
+def delete_product(request, pk):
+    if request.method == 'POST':    # 진짜 삭제하기 버튼 눌렀을 때
+        product = Product.objects.get(pk=pk) # pk로 Product 하나 가져오기
+        product.delete() # pk로 가져온 Product 삭제
+        return redirect('product:list2')
+    else:
+        product = Product.objects.get(pk=pk)
+    return render(request, 'product/product_confirm_delete.html', {'product' : product})
