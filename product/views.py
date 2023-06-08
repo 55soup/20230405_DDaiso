@@ -37,10 +37,10 @@ class ProductCreateView(CreateView):
 
 def create_product(request):
     if request.method == 'POST': #사용자가 입력하고 submit 버튼 눌렀을 때
-        form = ProductCreationForm(request.POST)
+        form = ProductCreationForm(request.POST, request.FILES) #주의! files는 request.FILES로 꼭 지정해줘야함.
         if form.is_valid(): #form 검사
             form.save() #form에 있는 정보 저장
-        return redirect('product:list') #저장하고 product_lisz2로 넘어가기
+        return redirect('product:list2') #저장하고 product_list2로 넘어가기
     else: # 처음에 빈 폼 보여주기
         form = ProductCreationForm()
     return render(request, 'product/product_create.html', {'form': form})
