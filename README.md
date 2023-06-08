@@ -131,5 +131,8 @@
    3. admin
    4. R: Product List
       1. product/templates/product/product_list
-      2. templates/base
+      2. templates/base.html
       3. static/css/style.css
+   5. R: Product Detail
+      1. product/templates/product/product_detail
+      2. static/css/style.css
