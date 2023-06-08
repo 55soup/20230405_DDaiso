@@ -116,3 +116,15 @@
       1. product/views
       2. product/urls
       3. product/templates/product/product_list.html
+8. feature/upload_image
+   1. settings
+      1. MEDIA_ROOT, MEDIA_URL in settings.py
+      2. urls
+      ```python
+        urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+      ```
+      3. python -m pip install pillow in Terminal  #image 처리하는 라이브러리
+   2. model ImageField(upload_image)
+      1. product/models
+      2. python manage.py makemigrations product
+      3. python manage.py migrate product
