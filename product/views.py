@@ -53,14 +53,16 @@ class ProductUpdateView(UpdateView):
     # success_url = reverse_lazy('product:list') #수정 성공하면, 이동할 url 이름
 
 def update_product(request, pk):
+    product = Product.objects.get(pk=pk)
     if request.method == 'POST':    #사용자가 입력하고 submit 버튼을 눌렀을 때
         #form에 있는 내용 가져오기
-        form = ProductChangeForm(request.POST)
+        form = ProductChangeForm(request.POST, request.FILES, instance=product)
         if form.is_valid(): #form 검사
-            selected_product = Product.objects.get(pk=pk)   #pk로 Product에서 하나 꺼내기
-        selected_product.name = form.cleaned_data.get('name')   #입력한 내용으로 Product 내용 수정
-        selected_product.price = form.cleaned_data.get('price')
-        selected_product.save() # product 저장
+            # selected_product = Product.objects.get(pk=pk)   #pk로 Product에서 하나 꺼내기
+            # selected_product.name = form.cleaned_data.get('name')   #입력한 내용으로 Product 내용 수정
+            # selected_product.price = form.cleaned_data.get('price')
+            # selected_product.save() # product 저장
+            form.save()
     else:
         #처음에 선택한 내용을 폼으로 보여주자
         selected_product = Product.objects.get(pk=pk)   #pk로 Product에서 하나 꺼내자 -- DB select문
