@@ -152,3 +152,4 @@
          2. python manage.py makemigrations product
          3. python manage.py migrate product
          4. product/templates/product/product_list
+         5. product/admin.py
